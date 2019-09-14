@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="testerForDiffGraphStyle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="side-menu">
+    <label for="append-country" style="display: block">Append Country for Comparing:</label>
+    <select name="countries" id="append-country" style="width: 100%">
+        <option value="-">-</option>
+        <option value="Argentina">Argentina</option>
+        <option value="Australia">Australia</option>
+        <option value="Brazil">Brazil</option>
+        <option value="Canada">Canada</option>
+        <option value="China">China</option>
+        <option value="Denmark">Denmark</option>
+        <option value="Finland">Finland</option>
+        <option value="France">France</option>
+        <option value="Germany">Germany</option>
+        <option value="Ghana">Ghana</option>
+        <option value="India">India</option>
+        <option value="Indonesia">Indonesia</option>
+        <option value="Israel">Israel</option>
+        <option value="Italy">Italy</option>
+        <option value="Japan">Japan</option>
+        <option value="Kenya">Kenya</option>
+        <option value="Mexico">Mexico</option>
+        <option value="Netherlands">Netherlands</option>
+        <option value="Nigeria">Nigeria</option>
+        <option value="Peru">Peru</option>
+        <option value="Poland">Poland</option>
+        <option value="Russia">Russia</option>
+        <option value="Saudi Arabia">Saudi Arabia</option>
+        <option value="Singapore">Singapore</option>
+        <option value="South Korea">South Korea</option>
+        <option value="Spain">Spain</option>
+        <option value="Sweden">Sweden</option>
+        <option value="Thailand">Thailand</option>
+        <option value="Turkey">Turkey</option>
+        <option value="UK">UK</option>
+        <option value="USA">USA</option>
+    </select>
+    <div class="countries" id="countries-stack" style="width: 100%; height: auto"></div>
+    <button id="addCompareCountries" class="appended" style="color: #aeaeae; font-size: 15px; margin-top: 15px; cursor: pointer">Compare</button>
+</div>
+
+<div class="more-information" style="height: 700px; width: 200px; position: relative; margin-right: 10px ">
+    <p class="wrapper__comm text-decoration">1. Communicating (low vs. high context)</p>
+    <p class="wrapper__eval text-decoration">2. Evaluating (direct vs. indirect negative feedback)</p>
+    <p class="wrapper__pers text-decoration">3. Persuading (principles first vs. applications first)</p>
+    <p class="wrapper__lead text-decoration">4. Leading (egalitarian vs. hierarchical)</p>
+    <p class="wrapper__dec text-decoration">5. Deciding (consensual vs. top-down)</p>
+    <p class="wrapper__trust text-decoration">6. Trusting (task-based vs. relationship-based)</p>
+    <p class="wrapper__dis text-decoration">7. Disagreeing (confrontational vs. avoiding confrontation)</p>
+    <p class="wrapper__sched text-decoration">8. Scheduling (linear time vs. flexible time)</p>
+
+</div>
+
+<div class="wrapper">
+    <div class="wrapper__comm">
+        <p class="wrapper__text">Communicating</p>
+    </div>
+    <div class="wrapper__eval">
+        <p class="wrapper__text">Evaluating</p>
+    </div>
+    <div class="wrapper__pers">
+        <p class="wrapper__text">Persuading</p>
+    </div>
+    <div class="wrapper__lead">
+        <p class="wrapper__text">Leading</p>
+    </div>
+    <div class="wrapper__dec">
+        <p class="wrapper__text">Deciding</p>
+    </div>
+    <div class="wrapper__trust">
+        <p class="wrapper__text">Trusting</p>
+    </div>
+    <div class="wrapper__dis">
+        <p class="wrapper__text">Disagreeing</p>
+    </div>
+    <div class="wrapper__sched">
+        <p class="wrapper__text">Scheduling</p>
+    </div>
+
+    <canvas id="myChart" style="transform: rotate(90deg);"></canvas>
+
+    <div class="color-country" id="color-country" style="width: 500px; height: 100px; margin-top: 10px; background-color: #fff; top: 700px; "></div>
+    <script>
+        let ctx = document.getElementById('myChart').getContext('2d');
+        ctx.canvas.width = 700;
+        ctx.canvas.height = 700;
+        function createGraph(values) {
+            var myLineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["", "", "", "", "", "", "", ""],
+                    datasets: values
+                },
+                options: {
+                    spanGaps: true,
+                    layout: {
+                        padding: {
+                            right: 40,
+                            top: 40,
+                            left: 40,
+                            bottom: 2
+                        }
+                    },
+                    legend : {
+                       display: false
+                    },
+                    tooltips : {
+                        enabled: false,
+                        intersect: true
+                    },
+                    hover: {mode: null},
+                    scales: {
+                        yAxes :[{
+                            ticks: {
+                                max: 100,
+                                min: 0,
+                                stepSize: 10,
+                                display: false, // was false
+
+                            },
+                            gridLines: {
+                                display: false, // was false
+                                lineWidth: '20',
+                                drawBorder: false,
+                            },
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                display: false, // was false
+
+                            },
+                            gridLines: {
+                                display: false, // was false
+                                drawBorder: false,
+                            },
+
+                        }],
+
+                    },
+                }
+            });
+        }
+
+    </script>
+</div>
+<script src="testerScript.js"></script>
+
+</body>
+</html>
